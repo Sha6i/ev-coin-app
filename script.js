@@ -19,6 +19,8 @@ function triggerAlarm() {
 
 document.getElementById("stopBtn").addEventListener("click", () => {
     document.getElementById("status").textContent = "Сигналът е спрян";
+    const audios = document.querySelectorAll("audio");
+    audios.forEach(audio => audio.pause());
 });
 
 setInterval(checkAlarm, 60000);
