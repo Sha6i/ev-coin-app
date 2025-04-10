@@ -1,27 +1,34 @@
-const ALARM_TIMES = ["14:50", "19:50"];
-const ALARM_SOUND = "https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3";
-
-function checkAlarm() {
-    const now = new Date();
-    const currentTime = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
-    
-    if (ALARM_TIMES.includes(currentTime)) {
-        triggerAlarm();
-    }
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
 }
 
-function triggerAlarm() {
-    const audio = new Audio(ALARM_SOUND);
-    audio.loop = true;
-    audio.play();
-    document.getElementById("status").textContent = "⚠️ СИГНАЛ ЗА ТЪРГОВИЯ! ⚠️";
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-document.getElementById("stopBtn").addEventListener("click", () => {
-    document.getElementById("status").textContent = "Сигналът е спрян";
-    const audios = document.querySelectorAll("audio");
-    audios.forEach(audio => audio.pause());
-});
+h1 {
+    color: #333;
+}
 
-setInterval(checkAlarm, 60000);
-checkAlarm();
+button {
+    padding: 10px 20px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
